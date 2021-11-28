@@ -18,7 +18,8 @@
       app
     >
        -->
-       
+
+
     <v-navigation-drawer
       class="deep-purple accent-4"
       dark
@@ -30,6 +31,7 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
+          :to="item.to"
           link
         >
           <v-list-item-icon>
@@ -55,11 +57,35 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>João Victor Angelotti</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-view-dashboard</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-forum</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
       <!--  -->
-      <p>
+      <router-view/>
+
+      <!--<p>
           Meu nome é João Victor, tenho 20 anos de idade. Nasci na cidade de
           Sorocaba do estado de São Paulo.
         </p>
@@ -104,7 +130,7 @@
           <li>Comprometido</li>
           <li>Facilidade em aprender</li>
           <li>Trabalho em equipe</li>
-        </ul>
+        </ul>-->
     </v-main>
     <v-footer
     dark
@@ -169,8 +195,10 @@
   export default {
     data: () => ({ drawer: null, 
           items: [
-          { title: 'Início', icon: 'mdi-view-dashboard' },
-          { title: 'Sobre', icon: 'mdi-forum' },
+          { title: 'Início', icon: 'mdi-view-dashboard', to:'/' },
+          { title: 'Sobre', icon: 'mdi-forum', to:'/sobre' },
+          { title: 'Pesquisar', icon: 'mdi-magnify', to:'/pesquisar' },
+          { title: 'Curte', icon: 'mdi-heart', to:'/curte' },
         ],
           icons: [
           'mdi-facebook',

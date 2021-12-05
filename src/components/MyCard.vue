@@ -1,25 +1,17 @@
 <template>
-  <v-card
-    class="mx-auto"
-    max-width="400"
-  >
+  <v-card class="mx-auto" max-width="400">
     <v-list-item two-line>
       <v-list-item-content>
         <v-list-item-title class="text-h5">
-          Sorocaba
+          {{ cardInfo.title }}
         </v-list-item-title>
-        <v-list-item-subtitle>Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ cardInfo.description }}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
     <v-card-text>
       <v-row align="center">
-        <v-col
-          class="text-h2"
-          cols="6"
-        >
-          23&deg;C
-        </v-col>
+        <v-col class="text-h2" cols="6"> 23&deg;C </v-col>
         <v-col cols="6">
           <v-img
             src="https://cdn.vuetifyjs.com/images/cards/sun.png"
@@ -53,10 +45,7 @@
     ></v-slider>
 
     <v-list class="transparent">
-      <v-list-item
-        v-for="item in forecast"
-        :key="item.day"
-      >
+      <v-list-item v-for="item in forecast" :key="item.day">
         <v-list-item-title>{{ item.day }}</v-list-item-title>
 
         <v-list-item-icon>
@@ -72,27 +61,34 @@
     <v-divider></v-divider>
 
     <v-card-actions>
-      <v-btn text
-        @click="reserve">
-        {{cardid}}
+      <v-btn text @click="reserve">
+        {{ cardid }}
       </v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
-  export default {
-    props:['cardid','cardInfo'],
-    data () {
-      return {
-        labels: ['SU', 'MO', 'TU', 'WED', 'TH', 'FR', 'SA'],
-        time: 0,
-        forecast: [
-          { day: 'Tuesday', icon: 'mdi-white-balance-sunny', temp: '24\xB0/12\xB0' },
-          { day: 'Wednesday', icon: 'mdi-white-balance-sunny', temp: '22\xB0/14\xB0' },
-          { day: 'Thursday', icon: 'mdi-cloud', temp: '25\xB0/15\xB0' },
-        ],
-      }
-    },
-  }
+export default {
+  props: ["cardid", "cardInfo"],
+  data() {
+    return {
+      labels: ["SU", "MO", "TU", "WED", "TH", "FR", "SA"],
+      time: 0,
+      forecast: [
+        {
+          day: "Tuesday",
+          icon: "mdi-white-balance-sunny",
+          temp: "24\xB0/12\xB0",
+        },
+        {
+          day: "Wednesday",
+          icon: "mdi-white-balance-sunny",
+          temp: "22\xB0/14\xB0",
+        },
+        { day: "Thursday", icon: "mdi-cloud", temp: "25\xB0/15\xB0" },
+      ],
+    };
+  },
+};
 </script>
